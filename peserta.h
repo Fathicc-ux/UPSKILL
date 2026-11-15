@@ -1,16 +1,38 @@
-#ifndef BST_PESERTA_H
-#define BST_PESERTA_H
+#ifndef PESERTA
+#define PESERTA
 
-#include <iostream>
-#include <string>
- using namespace std;
+#include "global.h"
 
-struct  info_peserta{
+struct elmPeserta
+{
     string idPeserta;
     string nama;
     string username;
     string email;
-    string prodi;
-};
-#endif
+    string programStudi;
 
+    addressPeserta left;
+    addressPeserta right;
+    addressRelasi firstRelasi;
+};
+
+struct BSTPeserta
+{
+    addressPeserta root;
+};
+
+// Operasi ADT Peserta
+bool isEmpty(BSTPeserta tree);
+void createBST(BSTPeserta &tree);
+addressPeserta alokasiPeserta(string id, string nama,
+                              string username, string email,
+                              string programStudi);
+void dealokasiPeserta(addressPeserta &P);
+
+void insertPeserta(BSTPeserta &tree, addressPeserta P);
+addressPeserta searchPeserta(BSTPeserta tree, string id);
+void deletePeserta(BSTPeserta &tree, string id);
+void updatePeserta(BSTPeserta &tree, string id);
+void viewPeserta(BSTPeserta tree);
+
+#endif
